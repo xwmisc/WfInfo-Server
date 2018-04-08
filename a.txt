@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>jsp - 引用 jar包. - wonkju - 博客园</title>
+<link type="text/css" rel="stylesheet" href="/bundles/blog-common.css?v=-hy83QNg62d4qYibixJzxMJkbf1P9fTBlqv7SK5zVL01"/>
+<link id="MainCss" type="text/css" rel="stylesheet" href="/skins/darkgreentrip/bundle-darkgreentrip.css?v=xPXJVC4GCITs1yYYgSeLkcicCxapqseaPVQLFGMO1wc1"/>
+<link id="mobile-style" media="only screen and (max-width: 767px)" type="text/css" rel="stylesheet" href="/skins/darkgreentrip/bundle-darkgreentrip-mobile.css?v=6NcJHqsIyaE4w19VtgFvCFahrnr2rYCTRRTdxlMDhhQ1"/>
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/listened/rss"/>
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/listened/rsd.xml"/>
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/listened/wlwmanifest.xml"/>
+<script src="//common.cnblogs.com/scripts/jquery-2.2.0.min.js"></script>
+<script type="text/javascript">var currentBlogApp = 'listened', cb_enable_mathjax=false;var isLogined=false;</script>
+<script src="/bundles/blog-common.js?v=taItysi72HxMPeH9Xg5nAYabRul6hhgahi3tVIMIKV81" type="text/javascript"></script>
+</head>
+<body>
+<a name="top"></a>
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/listened/"><img id="blogLogo" src="/Skins/custom/images/logo.gif" alt="返回主页" /></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/listened/">wonkju</a></h1>
+<h2>自己选择的路,跪着也要走完...</h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li><a id="blog_nav_sitehome" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li><a id="blog_nav_myhome" class="menu" href="http://www.cnblogs.com/listened/">首页</a></li>
+<li><a id="blog_nav_newpost" class="menu" rel="nofollow" href="https://i.cnblogs.com/EditPosts.aspx?opt=1">新随笔</a></li>
+<li></li>
+<li>
+<!----></li>
+<li><a id="blog_nav_admin" class="menu" rel="nofollow" href="https://i.cnblogs.com/">管理</a></li>
+</ul>
+		<div class="blogStats">
+			
+			
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+<div id="post_detail">
+<!--done-->
+<div id="topics">
+	<div class = "post">
+		<h1 class = "postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/listened/p/4248990.html">jsp - 引用 jar包.</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body" class="blogpost-body"><p>在jsp中使用不同的方式引用jar,准备的工作也不同.我接触过的有两种:1)直接在jsp页面中引用;2)在src下的java类中引用,然后在jsp中调用java类.</p>
+<p>1)直接引用:可以将jar包丢到Web-INF/lib 下, 然后通过Build Path,引入jar包,在 jsp页面中&lt;%@ page import的方式.</p>
+<p>2)第二种方式是我在src下的java源码中去调用jar包的类并封装好的,例如test.DB.java调用jdbc的Driver.然后我在jsp页面中使用test.DB.java,这时是一种解决方案是将jdbc的jar驱动包当到jdk/jre/lib/ext/下.这时不用在Build Path中引用也是可以的.</p>
+<p>以下是博客园一网友对加载顺序的帖子: ref: <a href="http://www.cnblogs.com/vigarbuaa/archive/2012/02/01/2334349.html" target="_blank">http://www.cnblogs.com/vigarbuaa/archive/2012/02/01/2334349.html</a></p>
+<p>Tomcat的class加载的优先顺序</p>
+<p>&mdash;&mdash;&mdash;&mdash;-&nbsp;<br /> 1.最先是$JAVA_HOME/jre/lib/ext/下的jar文件。&nbsp;<br /> 2.环境变量CLASSPATH中的jar和class文件。&nbsp;<br /> 3.$CATALINA_HOME/common/classes下的class文件。&nbsp;<br /> 4.$CATALINA_HOME/commons/endorsed下的jar文件。&nbsp;<br /> 5.$CATALINA_HOME/commons/i18n下的jar文件。&nbsp;<br /> 6.$CATALINA_HOME/common/lib 下的jar文件。(JDBC驱动之类的jar文件可以放在这里，避免配置好数据源却找不到JDBC Driver的情况。)&nbsp;<br /> 7.$CATALINA_HOME/server/classes下的class文件。&nbsp;<br /> 8.$CATALINA_HOME/server/lib/下的jar文件。&nbsp;<br /> 9.$CATALINA_BASE/shared/classes 下的class文件。&nbsp;<br /> 10.$CATALINA_BASE/shared/lib下的jar文件。&nbsp;<br /> 11.各自具体的webapp /WEB-INF/classes下的class文件。&nbsp;<br /> 12.各自具体的webapp /WEB-INF/lib下的jar文件。&nbsp;<br /> <br /> class的搜寻顺序如下&nbsp;<br /> &mdash;&mdash;&mdash;&mdash;-&nbsp;<br /> /WEB-INF/classes of your web application&nbsp;<br /> /WEB-INF/lib/*.jar of your web application&nbsp;<br /> $CATALINA_HOME/common/classes&nbsp;<br /> $CATALINA_HOME/common/endorsed/*.jar&nbsp;<br /> $CATALINA_HOME/common/i18n/*.jar&nbsp;<br /> $CATALINA_HOME/common/lib/*.jar&nbsp;<br /> $CATALINA_BASE/shared/classes&nbsp;<br /> $CATALINA_BASE/shared/lib/*.jar&nbsp;<br /> &mdash;&mdash;&mdash;&mdash;&ndash; </p></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag"></div>
+<div id="blog_post_info">
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"></div>
+</div>
+
+
+		</div>
+		<div class = "postDesc">posted @ <span id="post-date">2015-01-25 21:26</span> <a href='http://www.cnblogs.com/listened/'>wonkju</a> 阅读(<span id="post_view_count">...</span>) 评论(<span id="post_comment_count">...</span>)  <a href ="https://i.cnblogs.com/EditPosts.aspx?postid=4248990" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(4248990);return false;">收藏</a></div>
+	</div>
+	<script type="text/javascript">var allowComments=true,cb_blogId=158523,cb_entryId=4248990,cb_blogApp=currentBlogApp,cb_blogUserGuid='d5b3ba33-eb95-e211-9010-c3d7423e3b07',cb_entryCreatedDate='2015/1/25 21:26:00';loadViewCount(cb_entryId);var cb_postType=1;</script>
+	
+</div><!--end: topics 文章、评论容器-->
+</div><a name="!comments"></a><div id="blog-comments-placeholder"></div><script type="text/javascript">var commentManager = new blogCommentManager();commentManager.renderComments(0);</script>
+<div id='comment_form' class='commentform'>
+<a name='commentform'></a>
+<div id='divCommentShow'></div>
+<div id='comment_nav'><span id='span_refresh_tips'></span><a href='javascript:void(0);' onclick='return RefreshCommentList();' id='lnk_RefreshComments' runat='server' clientidmode='Static'>刷新评论</a><a href='#' onclick='return RefreshPage();'>刷新页面</a><a href='#top'>返回顶部</a></div>
+<div id='comment_form_container'></div>
+<div class='ad_text_commentbox' id='ad_text_under_commentbox'></div>
+<div id='ad_t2'></div>
+<div id='opt_under_post'></div>
+<div id='cnblogs_c1' class='c_ad_block'></div>
+<div id='under_post_news'></div>
+<div id='cnblogs_c2' class='c_ad_block'></div>
+<div id='under_post_kb'></div>
+<div id='HistoryToday' class='c_ad_block'></div>
+<script type='text/javascript'>
+    fixPostBody();
+    setTimeout(function () { incrementViewCount(cb_entryId); }, 50);
+    deliverAdT2();
+    deliverAdC1();
+    deliverAdC2();    
+    loadNewsAndKb();
+    loadBlogSignature();
+    LoadPostInfoBlock(cb_blogId, cb_entryId, cb_blogApp, cb_blogUserGuid);
+    GetPrevNextPost(cb_entryId, cb_blogId, cb_entryCreatedDate, cb_postType);
+    loadOptUnderPost();
+    GetHistoryToday(cb_blogId, cb_blogApp, cb_entryCreatedDate);   
+</script>
+</div>
+
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+			<div id="blog-calendar" style="display:none"></div><script type="text/javascript">loadBlogDefaultCalendar();</script>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn"></div><script type="text/javascript">loadBlogSideColumn();</script>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright &copy;2018 wonkju
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+</body>
+</html>
